@@ -6,7 +6,7 @@ class TodoList extends Component {
   constructor() {
     super();
     this.state = {
-      list: ""
+      text: ""
     };
   }
 
@@ -14,16 +14,17 @@ class TodoList extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleAddTodo = e => {
-    const { list } = this.state;
+    handleAddTodo = e => {
+        e.preventDefault();
+    const { text } = this.state;
     const newTodo = {
-      list,
+      text,
       completed: false,
       id: this.props.todos ? this.props.todos.length : 0
     };
     this.props.addTodo(newTodo);
     this.setState({
-      list: ""
+      text: ""
     });
   };
 
